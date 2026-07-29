@@ -1,4 +1,4 @@
-package main.java.com.swift.swiftuserservice;
+package com.swift.swiftuserservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
