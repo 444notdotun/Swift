@@ -28,9 +28,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/swift-userservice:${{ github.sha }} \
-          -f swift-userService/Dockerfile \
-          .
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/swift-userservice:${{ github.sha }} ./swift-userService
 
       - name: Push Docker image
         run: |
