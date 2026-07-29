@@ -1,0 +1,241 @@
+<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+
+<!-- ============================================================ -->
+<!-- PAGE 1: AUTH ENDPOINTS -->
+<!-- ============================================================ -->
+<mxCell id="auth_title" value="Sequence Diagrams — Auth Endpoints" style="text;fontSize=18;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="40" y="20" width="500" height="40" as="geometry"/></mxCell>
+
+<!-- POST /register HAPPY PATH -->
+<mxCell id="r_title" value="POST /register — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="70" width="300" height="30" as="geometry"/></mxCell>
+
+<mxCell id="rh1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="110" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="rh2" value="UserService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="110" width="120" height="40" as="geometry"/></mxCell>
+<mxCell id="rh3" value="BvnAPI" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="420" y="110" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="rh4" value="Kafka" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="600" y="110" width="100" height="40" as="geometry"/></mxCell>
+
+<mxCell id="rl1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="150" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="150"/><mxPoint x="90" y="620"/></Array></mxGeometry></mxCell>
+<mxCell id="rl2" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="280" y="150" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="150"/><mxPoint x="280" y="620"/></Array></mxGeometry></mxCell>
+<mxCell id="rl3" style="endArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry x="470" y="150" relative="0" as="geometry"><Array as="points"><mxPoint x="470" y="150"/><mxPoint x="470" y="620"/></Array></mxGeometry></mxCell>
+<mxCell id="rl4" style="endArrow=none;dashed=1;strokeColor=#9673a6;" edge="1" parent="1"><mxGeometry x="650" y="150" relative="0" as="geometry"><Array as="points"><mxPoint x="650" y="150"/><mxPoint x="650" y="620"/></Array></mxGeometry></mxCell>
+
+<mxCell id="rs1" value="POST /register {name, email, phone, bvn, password}" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="180" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="180"/><mxPoint x="280" y="180"/></Array></mxGeometry></mxCell>
+<mxCell id="rs2" value="Validate fields — email unique, BVN format 11 digits" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="190" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="rs3" value="POST /verify-bvn {bvn, name, phone}" style="endArrow=block;strokeColor=#b85450;fontSize=10;" edge="1" parent="1"><mxGeometry x="280" y="225" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="225"/><mxPoint x="470" y="225"/></Array></mxGeometry></mxCell>
+<mxCell id="rs4" value="BVN verified — name + phone match" style="endArrow=block;strokeColor=#b85450;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="470" y="245" relative="0" as="geometry"><Array as="points"><mxPoint x="470" y="245"/><mxPoint x="280" y="245"/></Array></mxGeometry></mxCell>
+<mxCell id="rs5" value="Hash password — save User (status: ACTIVE)" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="258" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="rs6" value="Emit: UserRegistered" style="endArrow=block;strokeColor=#9673a6;fontSize=10;" edge="1" parent="1"><mxGeometry x="280" y="292" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="292"/><mxPoint x="650" y="292"/></Array></mxGeometry></mxCell>
+<mxCell id="rs7" value="201 CREATED — { userId, email, status: ACTIVE }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="280" y="320" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="320"/><mxPoint x="90" y="320"/></Array></mxGeometry></mxCell>
+
+<!-- POST /register BAD PATHS -->
+<mxCell id="rb_title" value="POST /register — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="355" width="300" height="25" as="geometry"/></mxCell>
+<mxCell id="rb1" value="400 — Missing required fields (name, email, phone, bvn, password)" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="385" width="460" height="22" as="geometry"/></mxCell>
+<mxCell id="rb2" value="409 — Email already exists" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="412" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="rb3" value="400 — BVN must be 11 digits" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="439" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="rb4" value="400 — BVN details do not match (name or phone mismatch)" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="466" width="380" height="22" as="geometry"/></mxCell>
+<mxCell id="rb5" value="503 — BVN provider unavailable → User created with status: PENDING_VERIFICATION, retry scheduled" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="493" width="560" height="22" as="geometry"/></mxCell>
+
+<!-- POST /login HAPPY PATH -->
+<mxCell id="l_title" value="POST /login — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="535" width="300" height="30" as="geometry"/></mxCell>
+
+<mxCell id="lh1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="575" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="lh2" value="UserService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="575" width="120" height="40" as="geometry"/></mxCell>
+
+<mxCell id="ll1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="615" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="615"/><mxPoint x="90" y="860"/></Array></mxGeometry></mxCell>
+<mxCell id="ll2" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="280" y="615" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="615"/><mxPoint x="280" y="860"/></Array></mxGeometry></mxCell>
+
+<mxCell id="ls1" value="POST /login {email, password}" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="645" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="645"/><mxPoint x="280" y="645"/></Array></mxGeometry></mxCell>
+<mxCell id="ls2" value="Fetch user by email — verify BCrypt password" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="655" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="ls3" value="Check user status — must be ACTIVE" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="682" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="ls4" value="Generate JWT — subject: userId, expiry: 24h" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="290" y="709" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="ls5" value="200 OK — { token: JWT, userId, email }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="280" y="745" relative="0" as="geometry"><Array as="points"><mxPoint x="280" y="745"/><mxPoint x="90" y="745"/></Array></mxGeometry></mxCell>
+
+<!-- POST /login BAD PATHS -->
+<mxCell id="lb_title" value="POST /login — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="775" width="300" height="25" as="geometry"/></mxCell>
+<mxCell id="lb1" value="400 — Missing email or password" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="805" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="lb2" value="401 — Invalid credentials (wrong password)" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="832" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="lb3" value="403 — Account is FROZEN or PENDING_VERIFICATION" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="859" width="360" height="22" as="geometry"/></mxCell>
+<mxCell id="lb4" value="404 — User not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="886" width="260" height="22" as="geometry"/></mxCell>
+
+<!-- ============================================================ -->
+<!-- WALLET ENDPOINTS -->
+<!-- ============================================================ -->
+<mxCell id="w_section" value="Sequence Diagrams — Wallet Endpoints" style="text;fontSize=18;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="40" y="940" width="500" height="40" as="geometry"/></mxCell>
+
+<!-- POST /wallet HAPPY PATH -->
+<mxCell id="cw_title" value="POST /wallet — Create Wallet Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="990" width="400" height="30" as="geometry"/></mxCell>
+
+<mxCell id="cwh1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="1030" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="cwh2" value="WalletService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="1030" width="130" height="40" as="geometry"/></mxCell>
+
+<mxCell id="cwl1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="1070" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1070"/><mxPoint x="90" y="1320"/></Array></mxGeometry></mxCell>
+<mxCell id="cwl2" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="285" y="1070" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="1070"/><mxPoint x="285" y="1320"/></Array></mxGeometry></mxCell>
+
+<mxCell id="cws1" value="POST /wallet {currency} + JWT" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="1100" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1100"/><mxPoint x="285" y="1100"/></Array></mxGeometry></mxCell>
+<mxCell id="cws2" value="Extract userId from JWT" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1110" width="220" height="22" as="geometry"/></mxCell>
+<mxCell id="cws3" value="Check user status ACTIVE" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1137" width="220" height="22" as="geometry"/></mxCell>
+<mxCell id="cws4" value="Check no existing wallet for same currency" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1164" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="cws5" value="Create Wallet (status: ACTIVE, balance: 0.00)" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1191" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="cws6" value="201 CREATED — { walletId, currency, balance: 0.00, status: ACTIVE }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="285" y="1230" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="1230"/><mxPoint x="90" y="1230"/></Array></mxGeometry></mxCell>
+
+<!-- POST /wallet BAD PATHS -->
+<mxCell id="cwb_title" value="POST /wallet — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="1260" width="300" height="25" as="geometry"/></mxCell>
+<mxCell id="cwb1" value="401 — Missing or invalid JWT" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1290" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="cwb2" value="403 — User account is FROZEN or PENDING_VERIFICATION" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1317" width="380" height="22" as="geometry"/></mxCell>
+<mxCell id="cwb3" value="409 — Wallet for this currency already exists" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1344" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="cwb4" value="400 — Invalid currency (must be NGN or USD)" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1371" width="340" height="22" as="geometry"/></mxCell>
+
+<!-- GET /wallet/:id/balance HAPPY PATH -->
+<mxCell id="gb_title" value="GET /wallet/:id/balance — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="1415" width="400" height="30" as="geometry"/></mxCell>
+
+<mxCell id="gbh1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="1455" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="gbh2" value="WalletService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="1455" width="130" height="40" as="geometry"/></mxCell>
+<mxCell id="gbh3" value="Redis" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="430" y="1455" width="100" height="40" as="geometry"/></mxCell>
+
+<mxCell id="gbl1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="1495" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1495"/><mxPoint x="90" y="1720"/></Array></mxGeometry></mxCell>
+<mxCell id="gbl2" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="285" y="1495" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="1495"/><mxPoint x="285" y="1720"/></Array></mxGeometry></mxCell>
+<mxCell id="gbl3" style="endArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry x="480" y="1495" relative="0" as="geometry"><Array as="points"><mxPoint x="480" y="1495"/><mxPoint x="480" y="1720"/></Array></mxGeometry></mxCell>
+
+<mxCell id="gbs1" value="GET /wallet/:id/balance + JWT" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="1525" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1525"/><mxPoint x="285" y="1525"/></Array></mxGeometry></mxCell>
+<mxCell id="gbs2" value="Extract userId from JWT — verify ownership" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1535" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="gbs3" value="GET balance:walletId from Redis" style="endArrow=block;strokeColor=#b85450;fontSize=10;" edge="1" parent="1"><mxGeometry x="285" y="1570" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="1570"/><mxPoint x="480" y="1570"/></Array></mxGeometry></mxCell>
+<mxCell id="gbs4" value="Cache HIT — return balance" style="endArrow=block;strokeColor=#b85450;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="480" y="1590" relative="0" as="geometry"><Array as="points"><mxPoint x="480" y="1590"/><mxPoint x="285" y="1590"/></Array></mxGeometry></mxCell>
+<mxCell id="gbs_note" value="Cache MISS → fetch from PostgreSQL → repopulate Redis with TTL" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="1605" width="360" height="22" as="geometry"/></mxCell>
+<mxCell id="gbs5" value="200 OK — { walletId, balance, currency, status }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="285" y="1640" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="1640"/><mxPoint x="90" y="1640"/></Array></mxGeometry></mxCell>
+
+<!-- Balance BAD PATHS -->
+<mxCell id="gbb_title" value="GET /wallet/:id/balance — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="1668" width="320" height="25" as="geometry"/></mxCell>
+<mxCell id="gbb1" value="401 — Missing or invalid JWT" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1698" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="gbb2" value="403 — Wallet does not belong to authenticated user" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1725" width="360" height="22" as="geometry"/></mxCell>
+<mxCell id="gbb3" value="404 — Wallet not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="1752" width="260" height="22" as="geometry"/></mxCell>
+
+<!-- ============================================================ -->
+<!-- TRANSACTION ENDPOINTS -->
+<!-- ============================================================ -->
+<mxCell id="tx_section" value="Sequence Diagrams — Transaction Endpoints" style="text;fontSize=18;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="40" y="1810" width="600" height="40" as="geometry"/></mxCell>
+
+<!-- POST /deposit HAPPY PATH -->
+<mxCell id="dep_title" value="POST /deposit — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="1860" width="300" height="30" as="geometry"/></mxCell>
+
+<mxCell id="dh1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="1900" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="dh2" value="TransactionService" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="200" y="1900" width="150" height="40" as="geometry"/></mxCell>
+<mxCell id="dh3" value="Redis" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="420" y="1900" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="dh4" value="WalletService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="590" y="1900" width="130" height="40" as="geometry"/></mxCell>
+<mxCell id="dh5" value="Kafka" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="790" y="1900" width="100" height="40" as="geometry"/></mxCell>
+
+<mxCell id="dl1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="1940" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1940"/><mxPoint x="90" y="2280"/></Array></mxGeometry></mxCell>
+<mxCell id="dl2" style="endArrow=none;dashed=1;strokeColor=#d6b656;" edge="1" parent="1"><mxGeometry x="275" y="1940" relative="0" as="geometry"><Array as="points"><mxPoint x="275" y="1940"/><mxPoint x="275" y="2280"/></Array></mxGeometry></mxCell>
+<mxCell id="dl3" style="endArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry x="470" y="1940" relative="0" as="geometry"><Array as="points"><mxPoint x="470" y="1940"/><mxPoint x="470" y="2280"/></Array></mxGeometry></mxCell>
+<mxCell id="dl4" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="655" y="1940" relative="0" as="geometry"><Array as="points"><mxPoint x="655" y="1940"/><mxPoint x="655" y="2280"/></Array></mxGeometry></mxCell>
+<mxCell id="dl5" style="endArrow=none;dashed=1;strokeColor=#9673a6;" edge="1" parent="1"><mxGeometry x="840" y="1940" relative="0" as="geometry"><Array as="points"><mxPoint x="840" y="1940"/><mxPoint x="840" y="2280"/></Array></mxGeometry></mxCell>
+
+<mxCell id="ds1" value="POST /deposit {walletId, amount} + JWT" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="1970" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="1970"/><mxPoint x="275" y="1970"/></Array></mxGeometry></mxCell>
+<mxCell id="ds2" value="JWT auth — extract userId" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="285" y="1980" width="180" height="22" as="geometry"/></mxCell>
+<mxCell id="ds3" value="SETNX idempotency key (60s TTL)" style="endArrow=block;strokeColor=#b85450;fontSize=10;" edge="1" parent="1"><mxGeometry x="275" y="2015" relative="0" as="geometry"><Array as="points"><mxPoint x="275" y="2015"/><mxPoint x="470" y="2015"/></Array></mxGeometry></mxCell>
+<mxCell id="ds3r" value="OK" style="endArrow=block;strokeColor=#b85450;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="470" y="2035" relative="0" as="geometry"><Array as="points"><mxPoint x="470" y="2035"/><mxPoint x="275" y="2035"/></Array></mxGeometry></mxCell>
+<mxCell id="ds4" value="Fetch wallet — verify ownership + ACTIVE status" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="285" y="2048" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="ds5" value="Create Transaction (status: PENDING)" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="285" y="2075" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="ds6" value="gRPC: creditWallet(walletId, amount)" style="endArrow=block;strokeColor=#FF6600;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="275" y="2110" relative="0" as="geometry"><Array as="points"><mxPoint x="275" y="2110"/><mxPoint x="655" y="2110"/></Array></mxGeometry></mxCell>
+<mxCell id="ds6a" value="UPDATE wallet SET balance = balance + amount" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="665" y="2118" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="ds7" value="Emit: WalletCredited" style="endArrow=block;strokeColor=#9673a6;fontSize=10;" edge="1" parent="1"><mxGeometry x="655" y="2150" relative="0" as="geometry"><Array as="points"><mxPoint x="655" y="2150"/><mxPoint x="840" y="2150"/></Array></mxGeometry></mxCell>
+<mxCell id="ds7r" value="gRPC: SUCCESS" style="endArrow=block;strokeColor=#FF6600;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="655" y="2170" relative="0" as="geometry"><Array as="points"><mxPoint x="655" y="2170"/><mxPoint x="275" y="2170"/></Array></mxGeometry></mxCell>
+<mxCell id="ds8" value="Mark Transaction COMPLETED" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="285" y="2185" width="240" height="22" as="geometry"/></mxCell>
+<mxCell id="ds9" value="Emit: TransactionCompleted → Redis balance update + Notification" style="endArrow=block;strokeColor=#9673a6;fontSize=10;" edge="1" parent="1"><mxGeometry x="275" y="2218" relative="0" as="geometry"><Array as="points"><mxPoint x="275" y="2218"/><mxPoint x="840" y="2218"/></Array></mxGeometry></mxCell>
+<mxCell id="ds10" value="201 CREATED — { transactionId, reference, status: COMPLETED, newBalance }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="275" y="2250" relative="0" as="geometry"><Array as="points"><mxPoint x="275" y="2250"/><mxPoint x="90" y="2250"/></Array></mxGeometry></mxCell>
+
+<!-- Deposit BAD PATHS -->
+<mxCell id="db_title" value="POST /deposit — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="2285" width="300" height="25" as="geometry"/></mxCell>
+<mxCell id="db1" value="401 — Missing or invalid JWT" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2315" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="db2" value="403 — Wallet does not belong to authenticated user" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2342" width="360" height="22" as="geometry"/></mxCell>
+<mxCell id="db3" value="403 — Wallet is FROZEN" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2369" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="db4" value="400 — Amount must be greater than zero" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2396" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="db5" value="404 — Wallet not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2423" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="db6" value="409 — Duplicate request (idempotency key exists in Redis)" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2450" width="400" height="22" as="geometry"/></mxCell>
+<mxCell id="db7" value="503 — WalletService unavailable → Redis key expires naturally, user retries after 60s" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2477" width="520" height="22" as="geometry"/></mxCell>
+
+<!-- POST /withdraw HAPPY PATH -->
+<mxCell id="wd_title" value="POST /withdraw — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="2530" width="300" height="30" as="geometry"/></mxCell>
+<mxCell id="wd_note" value="Same flow as /deposit but WalletService calls debitWallet instead of creditWallet. Additional check: hasSufficientFunds before debit." style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2568" width="600" height="30" as="geometry"/></mxCell>
+<mxCell id="wd_bad" value="Extra bad path: 422 — Insufficient funds" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2605" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wd_bad2" value="All other bad paths same as /deposit" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2632" width="320" height="22" as="geometry"/></mxCell>
+
+<!-- GET /transactions HAPPY PATH -->
+<mxCell id="gt_title" value="GET /transactions?walletId=:id — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="2680" width="420" height="30" as="geometry"/></mxCell>
+
+<mxCell id="gth1" value="Client" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="2720" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="gth2" value="TransactionService" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="210" y="2720" width="150" height="40" as="geometry"/></mxCell>
+<mxCell id="gth3" value="Redis" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="430" y="2720" width="100" height="40" as="geometry"/></mxCell>
+
+<mxCell id="gtl1" style="endArrow=none;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1"><mxGeometry x="90" y="2760" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="2760"/><mxPoint x="90" y="2990"/></Array></mxGeometry></mxCell>
+<mxCell id="gtl2" style="endArrow=none;dashed=1;strokeColor=#d6b656;" edge="1" parent="1"><mxGeometry x="285" y="2760" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="2760"/><mxPoint x="285" y="2990"/></Array></mxGeometry></mxCell>
+<mxCell id="gtl3" style="endArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry x="480" y="2760" relative="0" as="geometry"><Array as="points"><mxPoint x="480" y="2760"/><mxPoint x="480" y="2990"/></Array></mxGeometry></mxCell>
+
+<mxCell id="gts1" value="GET /transactions?walletId=:id + JWT" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="2790" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="2790"/><mxPoint x="285" y="2790"/></Array></mxGeometry></mxCell>
+<mxCell id="gts2" value="JWT auth — verify ownership of wallet" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="2800" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="gts3" value="GET transactions:walletId (sorted set, last 20)" style="endArrow=block;strokeColor=#b85450;fontSize=10;" edge="1" parent="1"><mxGeometry x="285" y="2835" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="2835"/><mxPoint x="480" y="2835"/></Array></mxGeometry></mxCell>
+<mxCell id="gts4" value="Cache HIT — return list" style="endArrow=block;strokeColor=#b85450;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="480" y="2855" relative="0" as="geometry"><Array as="points"><mxPoint x="480" y="2855"/><mxPoint x="285" y="2855"/></Array></mxGeometry></mxCell>
+<mxCell id="gts_note" value="Cache MISS → query PostgreSQL → repopulate Redis sorted set" style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="2870" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="gts5" value="200 OK — { transactions: [...], total, page }" style="endArrow=block;strokeColor=#2563EB;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="285" y="2908" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="2908"/><mxPoint x="90" y="2908"/></Array></mxGeometry></mxCell>
+
+<!-- GET /transactions bad paths -->
+<mxCell id="gtb_title" value="GET /transactions — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="2938" width="300" height="25" as="geometry"/></mxCell>
+<mxCell id="gtb1" value="401 — Missing or invalid JWT" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2968" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="gtb2" value="403 — Wallet does not belong to authenticated user" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="2995" width="360" height="22" as="geometry"/></mxCell>
+<mxCell id="gtb3" value="404 — Wallet not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3022" width="260" height="22" as="geometry"/></mxCell>
+
+<!-- GET /transactions/:id -->
+<mxCell id="gti_title" value="GET /transactions/:id — Happy + Bad Paths" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="3070" width="420" height="30" as="geometry"/></mxCell>
+<mxCell id="gti_note" value="Same flow as GET /transactions but fetches a single transaction by ID. Ownership check still required." style="text;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3108" width="560" height="22" as="geometry"/></mxCell>
+<mxCell id="gti1" value="200 OK — { transaction object }" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3135" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="gti2" value="404 — Transaction not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3162" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="gti3" value="403 — Transaction does not belong to authenticated user" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3189" width="380" height="22" as="geometry"/></mxCell>
+
+<!-- ============================================================ -->
+<!-- MANAGER ENDPOINTS -->
+<!-- ============================================================ -->
+<mxCell id="mgr_section" value="Sequence Diagrams — Manager Endpoints" style="text;fontSize=18;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="40" y="3250" width="600" height="40" as="geometry"/></mxCell>
+
+<!-- PUT /users/:id/freeze HAPPY PATH -->
+<mxCell id="fa_title" value="PUT /accounts/:id/freeze — Happy Path" style="text;fontSize=14;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="3300" width="400" height="30" as="geometry"/></mxCell>
+
+<mxCell id="fah1" value="Manager" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="3340" width="100" height="40" as="geometry"/></mxCell>
+<mxCell id="fah2" value="UserService" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="3340" width="130" height="40" as="geometry"/></mxCell>
+<mxCell id="fah3" value="Kafka" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="430" y="3340" width="100" height="40" as="geometry"/></mxCell>
+
+<mxCell id="fal1" style="endArrow=none;dashed=1;strokeColor=#b85450;" edge="1" parent="1"><mxGeometry x="90" y="3380" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="3380"/><mxPoint x="90" y="3620"/></Array></mxGeometry></mxCell>
+<mxCell id="fal2" style="endArrow=none;dashed=1;strokeColor=#82b366;" edge="1" parent="1"><mxGeometry x="285" y="3380" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="3380"/><mxPoint x="285" y="3620"/></Array></mxGeometry></mxCell>
+<mxCell id="fal3" style="endArrow=none;dashed=1;strokeColor=#9673a6;" edge="1" parent="1"><mxGeometry x="480" y="3380" relative="0" as="geometry"><Array as="points"><mxPoint x="480" y="3380"/><mxPoint x="480" y="3620"/></Array></mxGeometry></mxCell>
+
+<mxCell id="fas1" value="PUT /accounts/:id/freeze {reason} + JWT (MANAGER role)" style="endArrow=block;strokeColor=#b85450;fontStyle=1;fontSize=10;" edge="1" parent="1"><mxGeometry x="90" y="3410" relative="0" as="geometry"><Array as="points"><mxPoint x="90" y="3410"/><mxPoint x="285" y="3410"/></Array></mxGeometry></mxCell>
+<mxCell id="fas2" value="Verify JWT role = MANAGER" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="3420" width="220" height="22" as="geometry"/></mxCell>
+<mxCell id="fas3" value="Fetch user — verify exists and not already FROZEN" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="3447" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="fas4" value="Set user status = FROZEN — increment freezeCount — create AccountFreeze record" style="text;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1"><mxGeometry x="295" y="3474" width="400" height="22" as="geometry"/></mxCell>
+<mxCell id="fas5" value="Emit: AccountFrozen" style="endArrow=block;strokeColor=#9673a6;fontSize=10;" edge="1" parent="1"><mxGeometry x="285" y="3508" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="3508"/><mxPoint x="480" y="3508"/></Array></mxGeometry></mxCell>
+<mxCell id="fas6" value="200 OK — { userId, status: FROZEN, freezeCount }" style="endArrow=block;strokeColor=#b85450;fontStyle=1;fontSize=10;dashed=1;" edge="1" parent="1"><mxGeometry x="285" y="3545" relative="0" as="geometry"><Array as="points"><mxPoint x="285" y="3545"/><mxPoint x="90" y="3545"/></Array></mxGeometry></mxCell>
+
+<!-- Freeze bad paths -->
+<mxCell id="fab_title" value="PUT /accounts/:id/freeze — Bad Paths" style="text;fontSize=12;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="3575" width="340" height="25" as="geometry"/></mxCell>
+<mxCell id="fab1" value="401 — Missing or invalid JWT" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3605" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="fab2" value="403 — Authenticated user is not a MANAGER" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3632" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fab3" value="404 — User not found" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3659" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="fab4" value="409 — User is already FROZEN" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3686" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="fab5" value="400 — Freeze reason is required" style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3713" width="280" height="22" as="geometry"/></mxCell>
+
+<!-- Remaining manager endpoints — summarised -->
+<mxCell id="mgr_rest" value="Remaining Manager Endpoints — Pattern Summary" style="text;fontSize=14;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="40" y="3770" width="460" height="30" as="geometry"/></mxCell>
+
+<mxCell id="mgr1" value="PUT /accounts/:id/unfreeze — Same as freeze but sets status = ACTIVE, creates AccountFreeze with status LIFTED. Bad paths: 403 not manager, 404 not found, 409 not currently frozen." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3808" width="700" height="30" as="geometry"/></mxCell>
+
+<mxCell id="mgr2" value="PUT /wallets/:id/freeze — Same pattern but targets Wallet entity. Sets wallet status = FROZEN, creates WalletFreeze record. Does not freeze other wallets. Bad paths same as account freeze." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3845" width="700" height="30" as="geometry"/></mxCell>
+
+<mxCell id="mgr3" value="PUT /wallets/:id/unfreeze — Same as wallet freeze but sets status = ACTIVE, lifts WalletFreeze record." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3882" width="600" height="22" as="geometry"/></mxCell>
+
+<mxCell id="mgr4" value="GET /transactions/all — Manager only. Fetches all transactions across all wallets. Paginated. 200 OK { transactions, total, page }. Bad paths: 401, 403 not manager." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3912" width="700" height="30" as="geometry"/></mxCell>
+
+<mxCell id="mgr5" value="GET /transactions/flagged — Manager only. Fetches all FraudFlag records with status OPEN. 200 OK { flags: [...] }. Bad paths: 401, 403 not manager." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3949" width="700" height="30" as="geometry"/></mxCell>
+
+<mxCell id="mgr6" value="PUT /fraud/:id/review {decision: REVIEWED | DISMISSED} — Manager reviews fraud flag. Updates FraudFlag status. 200 OK. Bad paths: 401, 403, 404 flag not found, 400 invalid decision." style="text;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1"><mxGeometry x="40" y="3986" width="800" height="30" as="geometry"/></mxCell>
+
+<!-- Transfer reference note -->
+<mxCell id="tx_ref" value="NOTE: POST /transfer sequence diagrams are in files 02_SequenceDiagram_HappyPath.drawio and 03_SequenceDiagram_FailurePath.drawio" style="text;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=2;" vertex="1" parent="1"><mxGeometry x="40" y="4040" width="800" height="30" as="geometry"/></mxCell>
+
+</root></mxGraphModel>

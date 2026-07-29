@@ -1,0 +1,79 @@
+<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+
+<mxCell id="title" value="System Architecture — Fintech Wallet" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=20;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="400" y="20" width="500" height="40" as="geometry"/></mxCell>
+
+<!-- CLIENT LAYER -->
+<mxCell id="client_label" value="CLIENT LAYER" style="text;fontSize=11;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="40" y="75" width="120" height="20" as="geometry"/></mxCell>
+<mxCell id="client" value="Client&#xa;(Mobile / Web)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="530" y="80" width="200" height="60" as="geometry"/></mxCell>
+
+<!-- API GATEWAY -->
+<mxCell id="gw_label" value="GATEWAY LAYER" style="text;fontSize=11;fontStyle=1;fontColor=#d6b656;" vertex="1" parent="1"><mxGeometry x="40" y="195" width="140" height="20" as="geometry"/></mxCell>
+<mxCell id="gateway" value="API Gateway + Load Balancer&#xa;(Rate Limiting | Auth Guard)" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="480" y="200" width="300" height="60" as="geometry"/></mxCell>
+
+<!-- Client → Gateway -->
+<mxCell id="c_g" style="endArrow=block;startArrow=block;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="client" target="gateway"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- SERVICE LAYER -->
+<mxCell id="svc_label" value="SERVICE LAYER" style="text;fontSize=11;fontStyle=1;fontColor=#82b366;" vertex="1" parent="1"><mxGeometry x="40" y="335" width="120" height="20" as="geometry"/></mxCell>
+<mxCell id="svc_bg" value="" style="rounded=1;fillColor=#f5f5f5;strokeColor=#999999;dashed=1;" vertex="1" parent="1"><mxGeometry x="120" y="330" width="1020" height="120" as="geometry"/></mxCell>
+
+<mxCell id="usersvc" value="UserService&#xa;(Registration | BVN | Auth)" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="140" y="350" width="170" height="60" as="geometry"/></mxCell>
+<mxCell id="txsvc" value="TransactionService&#xa;(Orchestrator | Pre-flight)" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="340" y="350" width="180" height="60" as="geometry"/></mxCell>
+<mxCell id="walletsvc" value="WalletService&#xa;(Debit | Credit | Freeze)" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="550" y="350" width="170" height="60" as="geometry"/></mxCell>
+<mxCell id="fraudsvc" value="FraudService&#xa;(Rule-based Detection)" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="750" y="350" width="170" height="60" as="geometry"/></mxCell>
+<mxCell id="notifsvc" value="NotificationService&#xa;(SMS | Email)" style="rounded=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="950" y="350" width="170" height="60" as="geometry"/></mxCell>
+
+<!-- Gateway → Services -->
+<mxCell id="g_u" style="endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="gateway" target="usersvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="g_t" style="endArrow=block;strokeColor=#d6b656;" edge="1" parent="1" source="gateway" target="txsvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="g_w" style="endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="gateway" target="walletsvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- gRPC label -->
+<mxCell id="grpc_label" value="gRPC (sync)" style="text;fontSize=11;fontStyle=1;fontColor=#FF6600;" vertex="1" parent="1"><mxGeometry x="436" y="322" width="100" height="20" as="geometry"/></mxCell>
+<mxCell id="grpc" style="endArrow=block;startArrow=block;strokeColor=#FF6600;strokeWidth=2;fontStyle=1;" edge="1" parent="1" source="txsvc" target="walletsvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- KAFKA -->
+<mxCell id="kafka_label" value="EVENT BUS" style="text;fontSize=11;fontStyle=1;fontColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="40" y="510" width="90" height="20" as="geometry"/></mxCell>
+<mxCell id="kafka" value="Kafka Event Bus&#xa;(SenderDebited | ReceiverCredited | TransactionCompleted | TransactionReversed | CreditFailed)" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="300" y="510" width="660" height="60" as="geometry"/></mxCell>
+
+<!-- Services → Kafka -->
+<mxCell id="t_k" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="txsvc" target="kafka"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="w_k" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="walletsvc" target="kafka"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- Kafka → Consumers -->
+<mxCell id="k_f" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="kafka" target="fraudsvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="k_n" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="kafka" target="notifsvc"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- DATA LAYER -->
+<mxCell id="data_label" value="DATA LAYER" style="text;fontSize=11;fontStyle=1;fontColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="40" y="645" width="100" height="20" as="geometry"/></mxCell>
+
+<mxCell id="pg_write" value="PostgreSQL&#xa;Write Primary&#xa;(Wallets | Transactions | Users)" style="shape=cylinder3;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="140" y="650" width="160" height="90" as="geometry"/></mxCell>
+<mxCell id="pg_read" value="PostgreSQL&#xa;Read Replica&#xa;(Status checks | Pre-flight)" style="shape=cylinder3;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="340" y="650" width="160" height="90" as="geometry"/></mxCell>
+<mxCell id="redis" value="Redis&#xa;(Balance cache&#xa;Transaction history)" style="shape=cylinder3;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="540" y="650" width="140" height="90" as="geometry"/></mxCell>
+<mxCell id="eventstore" value="EventStore&#xa;PostgreSQL&#xa;(Append-only events)" style="shape=cylinder3;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="720" y="650" width="150" height="90" as="geometry"/></mxCell>
+
+<!-- Services → Data -->
+<mxCell id="u_pgw" style="endArrow=block;strokeColor=#6c8ebf;" edge="1" parent="1" source="usersvc" target="pg_write"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="w_pgw" style="endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="walletsvc" target="pg_write"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="t_pgr" style="endArrow=block;strokeColor=#82b366;" edge="1" parent="1" source="txsvc" target="pg_read"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="w_redis" style="endArrow=block;strokeColor=#b85450;" edge="1" parent="1" source="walletsvc" target="redis"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="t_redis" style="endArrow=block;strokeColor=#b85450;" edge="1" parent="1" source="txsvc" target="redis"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="w_event" style="endArrow=block;strokeColor=#d6b656;" edge="1" parent="1" source="walletsvc" target="eventstore"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- PgBouncer -->
+<mxCell id="pgbouncer" value="PgBouncer&#xa;Connection Pooler" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="220" y="780" width="200" height="55" as="geometry"/></mxCell>
+<mxCell id="pgw_b" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="pg_write" target="pgbouncer"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="pgr_b" style="endArrow=block;strokeColor=#9673a6;" edge="1" parent="1" source="pg_read" target="pgbouncer"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- EXTERNAL -->
+<mxCell id="ext_label" value="EXTERNAL SERVICES" style="text;fontSize=11;fontStyle=1;fontColor=#b85450;" vertex="1" parent="1"><mxGeometry x="920" y="645" width="180" height="20" as="geometry"/></mxCell>
+<mxCell id="prembly" value="Prembly BVN API&#xa;(Sandbox / Live)" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="940" y="670" width="180" height="60" as="geometry"/></mxCell>
+<mxCell id="u_prembly" style="endArrow=block;strokeColor=#b85450;" edge="1" parent="1" source="usersvc" target="prembly"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- Legend -->
+<mxCell id="legend" value="LEGEND" style="text;fontSize=11;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="870" width="80" height="20" as="geometry"/></mxCell>
+<mxCell id="l_grpc" value="━━ gRPC (synchronous — money movement)" style="text;fontSize=10;fontColor=#FF6600;" vertex="1" parent="1"><mxGeometry x="40" y="892" width="300" height="20" as="geometry"/></mxCell>
+<mxCell id="l_kafka" value="━━ Kafka event (async — downstream consumers)" style="text;fontSize=10;fontColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="40" y="912" width="320" height="20" as="geometry"/></mxCell>
+<mxCell id="l_http" value="━━ HTTP REST (client-facing)" style="text;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1"><mxGeometry x="40" y="932" width="250" height="20" as="geometry"/></mxCell>
+
+</root></mxGraphModel>

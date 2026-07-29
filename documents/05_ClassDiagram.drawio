@@ -1,0 +1,216 @@
+<mxGraphModel><root><mxCell id="0"/><mxCell id="1" parent="0"/>
+
+<mxCell id="title" value="Class Diagram — Fintech Wallet System" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=20;fontStyle=1;fontColor=#2563EB;" vertex="1" parent="1"><mxGeometry x="500" y="20" width="500" height="40" as="geometry"/></mxCell>
+
+<!-- ==================== ENUMS ==================== -->
+<!-- UserRole -->
+<mxCell id="user_role" value="«enumeration»&#xa;UserRole" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="40" y="80" width="160" height="100" as="geometry"/></mxCell>
+<mxCell id="ur1" value="CUSTOMER" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_role"><mxGeometry x="0" y="40" width="160" height="25" as="geometry"/></mxCell>
+<mxCell id="ur2" value="MANAGER" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_role"><mxGeometry x="0" y="65" width="160" height="25" as="geometry"/></mxCell>
+
+<!-- UserStatus -->
+<mxCell id="user_status" value="«enumeration»&#xa;UserStatus" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="220" y="80" width="160" height="115" as="geometry"/></mxCell>
+<mxCell id="us1" value="ACTIVE" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_status"><mxGeometry x="0" y="40" width="160" height="25" as="geometry"/></mxCell>
+<mxCell id="us2" value="FROZEN" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_status"><mxGeometry x="0" y="65" width="160" height="25" as="geometry"/></mxCell>
+<mxCell id="us3" value="CLOSED" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_status"><mxGeometry x="0" y="90" width="160" height="25" as="geometry"/></mxCell>
+
+<!-- TransactionStatus -->
+<mxCell id="tx_status" value="«enumeration»&#xa;TransactionStatus" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="400" y="80" width="180" height="130" as="geometry"/></mxCell>
+<mxCell id="ts1" value="PENDING" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_status"><mxGeometry x="0" y="40" width="180" height="25" as="geometry"/></mxCell>
+<mxCell id="ts2" value="COMPLETED" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_status"><mxGeometry x="0" y="65" width="180" height="25" as="geometry"/></mxCell>
+<mxCell id="ts3" value="FAILED" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_status"><mxGeometry x="0" y="90" width="180" height="25" as="geometry"/></mxCell>
+<mxCell id="ts4" value="REVERSED" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_status"><mxGeometry x="0" y="115" width="180" height="25" as="geometry"/></mxCell>
+
+<!-- WalletStatus -->
+<mxCell id="wallet_status" value="«enumeration»&#xa;WalletStatus" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="600" y="80" width="160" height="115" as="geometry"/></mxCell>
+<mxCell id="ws1" value="ACTIVE" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_status"><mxGeometry x="0" y="40" width="160" height="25" as="geometry"/></mxCell>
+<mxCell id="ws2" value="FROZEN" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_status"><mxGeometry x="0" y="65" width="160" height="25" as="geometry"/></mxCell>
+<mxCell id="ws3" value="CLOSED" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_status"><mxGeometry x="0" y="90" width="160" height="25" as="geometry"/></mxCell>
+
+<!-- Currency -->
+<mxCell id="currency" value="«enumeration»&#xa;Currency" style="swimlane;startSize=40;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="780" y="80" width="140" height="100" as="geometry"/></mxCell>
+<mxCell id="cur1" value="NGN" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="currency"><mxGeometry x="0" y="40" width="140" height="25" as="geometry"/></mxCell>
+<mxCell id="cur2" value="USD" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="currency"><mxGeometry x="0" y="65" width="140" height="25" as="geometry"/></mxCell>
+
+<!-- ==================== INTERFACES ==================== -->
+<!-- BvnVerificationService -->
+<mxCell id="bvn_iface" value="«interface»&#xa;BvnVerificationService" style="swimlane;startSize=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="940" y="80" width="240" height="100" as="geometry"/></mxCell>
+<mxCell id="bi1" value="+ verify(bvn: String, name: String, phone: String): BvnVerificationResult" style="text;align=left;spacingLeft=10;fontSize=10;" vertex="1" parent="bvn_iface"><mxGeometry x="0" y="40" width="240" height="50" as="geometry"/></mxCell>
+
+<!-- NotificationStrategy -->
+<mxCell id="notif_iface" value="«interface»&#xa;NotificationStrategy" style="swimlane;startSize=40;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1"><mxGeometry x="1200" y="80" width="220" height="80" as="geometry"/></mxCell>
+<mxCell id="ni1" value="+ send(userId: String, message: String): void" style="text;align=left;spacingLeft=10;fontSize=10;" vertex="1" parent="notif_iface"><mxGeometry x="0" y="40" width="220" height="35" as="geometry"/></mxCell>
+
+<!-- ==================== DOMAIN ENTITIES ==================== -->
+<!-- User -->
+<mxCell id="user_class" value="User" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="280" width="300" height="300" as="geometry"/></mxCell>
+<mxCell id="uc_div" value="" style="line;strokeColor=#6c8ebf;" vertex="1" parent="user_class"><mxGeometry x="0" y="120" width="300" height="10" as="geometry"/></mxCell>
+<mxCell id="uc1" value="- id: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="30" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc2" value="- name: String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="52" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc3" value="- email: String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="74" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc4" value="- bvn: String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="96" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc5" value="- role: UserRole" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="128" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc6" value="- status: UserStatus" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="150" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc7" value="- wallets: List&lt;Wallet&gt;" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="172" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc_div2" value="" style="line;strokeColor=#6c8ebf;" vertex="1" parent="user_class"><mxGeometry x="0" y="198" width="300" height="10" as="geometry"/></mxCell>
+<mxCell id="uc_m1" value="+ freeze(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="206" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc_m2" value="+ unfreeze(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="228" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc_m3" value="+ isActive(): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="250" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="uc_m4" value="+ addWallet(wallet: Wallet): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="user_class"><mxGeometry x="0" y="272" width="300" height="22" as="geometry"/></mxCell>
+
+<!-- Wallet -->
+<mxCell id="wallet_class" value="Wallet" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="420" y="280" width="300" height="310" as="geometry"/></mxCell>
+<mxCell id="wc_div" value="" style="line;strokeColor=#82b366;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="140" width="300" height="10" as="geometry"/></mxCell>
+<mxCell id="wc1" value="- id: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="30" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc2" value="- userId: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="52" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc3" value="- currency: Currency" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="74" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc4" value="- balance: BigDecimal" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="96" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc5" value="- status: WalletStatus" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="118" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_div2" value="" style="line;strokeColor=#82b366;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="148" width="300" height="10" as="geometry"/></mxCell>
+<mxCell id="wc_m1" value="+ debit(amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="156" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m2" value="+ credit(amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="178" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m3" value="+ freeze(reason: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="200" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m4" value="+ unfreeze(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="222" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m5" value="+ isActive(): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="244" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m6" value="+ hasSufficientFunds(amount: BigDecimal): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="266" width="300" height="22" as="geometry"/></mxCell>
+<mxCell id="wc_m7" value="+ getBalance(): BigDecimal" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="wallet_class"><mxGeometry x="0" y="288" width="300" height="22" as="geometry"/></mxCell>
+
+<!-- Transaction -->
+<mxCell id="tx_class" value="Transaction" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="800" y="280" width="320" height="310" as="geometry"/></mxCell>
+<mxCell id="tc_div" value="" style="line;strokeColor=#d6b656;" vertex="1" parent="tx_class"><mxGeometry x="0" y="170" width="320" height="10" as="geometry"/></mxCell>
+<mxCell id="tc1" value="- id: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="30" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc2" value="- senderWalletId: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="52" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc3" value="- receiverWalletId: UUID" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="74" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc4" value="- amount: BigDecimal" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="96" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc5" value="- currency: Currency" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="118" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc6" value="- status: TransactionStatus" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="140" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc7" value="- idempotencyKey: String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="162" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc_div2" value="" style="line;strokeColor=#d6b656;" vertex="1" parent="tx_class"><mxGeometry x="0" y="188" width="320" height="10" as="geometry"/></mxCell>
+<mxCell id="tc_m1" value="+ complete(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="196" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc_m2" value="+ fail(reason: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="218" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc_m3" value="+ reverse(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="240" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc_m4" value="+ isPending(): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="262" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="tc_m5" value="+ getReference(): String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="tx_class"><mxGeometry x="0" y="284" width="320" height="22" as="geometry"/></mxCell>
+
+<!-- ==================== SERVICE CLASSES ==================== -->
+<!-- TransactionService -->
+<mxCell id="txsvc_class" value="TransactionService" style="swimlane;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="680" width="340" height="230" as="geometry"/></mxCell>
+<mxCell id="tsc_div" value="" style="line;strokeColor=#d6b656;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="65" width="340" height="10" as="geometry"/></mxCell>
+<mxCell id="tsc1" value="- walletServiceClient: WalletServiceClient" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="30" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc2" value="- redisTemplate: RedisTemplate" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="52" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m1" value="+ transfer(request: TransferRequest): TransferResponse" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="75" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m2" value="+ getTransaction(id: UUID): Transaction" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="97" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m3" value="+ getTransactionHistory(walletId: UUID): List&lt;Transaction&gt;" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="119" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m4" value="- validateIdempotency(key: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="141" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m5" value="- preflight(request: TransferRequest): WalletStatus" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="163" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m6" value="- reverseDebit(walletId: UUID, amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="185" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="tsc_m7" value="- publishEvent(event: DomainEvent): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="txsvc_class"><mxGeometry x="0" y="207" width="340" height="22" as="geometry"/></mxCell>
+
+<!-- WalletService -->
+<mxCell id="walletsvc_class" value="WalletService" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="420" y="680" width="320" height="230" as="geometry"/></mxCell>
+<mxCell id="wsc_div" value="" style="line;strokeColor=#82b366;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="65" width="320" height="10" as="geometry"/></mxCell>
+<mxCell id="wsc1" value="- walletRepository: WalletRepository" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="30" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc2" value="- eventStore: EventStore" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="52" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m1" value="+ createWallet(userId: UUID, currency: Currency): Wallet" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="75" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m2" value="+ debitSender(walletId: UUID, amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="97" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m3" value="+ creditReceiver(walletId: UUID, amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="119" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m4" value="+ reverseDebit(walletId: UUID, amount: BigDecimal): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="141" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m5" value="+ freezeWallet(walletId: UUID, reason: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="163" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m6" value="+ getBalance(walletId: UUID): BigDecimal" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="185" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="wsc_m7" value="+ getWalletStatus(walletId: UUID): WalletStatus" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="walletsvc_class"><mxGeometry x="0" y="207" width="320" height="22" as="geometry"/></mxCell>
+
+<!-- UserService -->
+<mxCell id="usersvc_class" value="UserService" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="780" y="680" width="340" height="210" as="geometry"/></mxCell>
+<mxCell id="usc_div" value="" style="line;strokeColor=#82b366;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="55" width="340" height="10" as="geometry"/></mxCell>
+<mxCell id="usc1" value="- bvnService: BvnVerificationService" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="30" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m1" value="+ register(request: RegisterRequest): User" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="65" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m2" value="+ login(request: LoginRequest): AuthToken" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="87" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m3" value="+ verifyBvn(userId: UUID): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="109" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m4" value="+ freezeAccount(userId: UUID, reason: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="131" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m5" value="+ unfreezeAccount(userId: UUID): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="153" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="usc_m6" value="+ retryPendingVerifications(): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="usersvc_class"><mxGeometry x="0" y="175" width="340" height="22" as="geometry"/></mxCell>
+
+<!-- FraudService -->
+<mxCell id="fraudsvc_class" value="FraudService" style="swimlane;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="40" y="980" width="340" height="185" as="geometry"/></mxCell>
+<mxCell id="fsc_div" value="" style="line;strokeColor=#b85450;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="45" width="340" height="10" as="geometry"/></mxCell>
+<mxCell id="fsc1" value="- fraudFlagRepository: FraudFlagRepository" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="22" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m1" value="+ analyse(event: TransactionCompleted): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="55" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m2" value="+ checkLargeTransfer(amount: BigDecimal): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="77" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m3" value="+ checkHighVelocity(walletId: UUID): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="99" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m4" value="+ checkNewAccountLargeTransfer(walletId: UUID, amount: BigDecimal): boolean" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="121" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m5" value="+ flagTransaction(transactionId: UUID, type: FlagType): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="143" width="340" height="22" as="geometry"/></mxCell>
+<mxCell id="fsc_m6" value="+ reviewFlag(flagId: UUID, decision: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="fraudsvc_class"><mxGeometry x="0" y="165" width="340" height="22" as="geometry"/></mxCell>
+
+<!-- NotificationService -->
+<mxCell id="notifsvc_class" value="NotificationService" style="swimlane;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="420" y="980" width="320" height="165" as="geometry"/></mxCell>
+<mxCell id="nsc_div" value="" style="line;strokeColor=#6c8ebf;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="55" width="320" height="10" as="geometry"/></mxCell>
+<mxCell id="nsc1" value="- strategies: Map&lt;String, NotificationStrategy&gt;" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="30" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="nsc_m1" value="+ onTransactionCompleted(event: TransactionCompleted): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="65" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="nsc_m2" value="+ onTransactionReversed(event: TransactionReversed): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="87" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="nsc_m3" value="+ notify(userId: String, channel: String, message: String): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="109" width="320" height="22" as="geometry"/></mxCell>
+<mxCell id="nsc_m4" value="+ onAccountVerified(event: UserVerifiedEvent): void" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="notifsvc_class"><mxGeometry x="0" y="131" width="320" height="22" as="geometry"/></mxCell>
+
+<!-- BvnVerificationService Implementations -->
+<mxCell id="mock_bvn" value="MockBvnVerificationService" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="800" y="980" width="260" height="80" as="geometry"/></mxCell>
+<mxCell id="mb1" value="+ verify(...): BvnVerificationResult" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="mock_bvn"><mxGeometry x="0" y="30" width="260" height="22" as="geometry"/></mxCell>
+<mxCell id="mb2" value="+ always returns SUCCESS in dev" style="text;align=left;spacingLeft=10;fontSize=10;fontStyle=2;" vertex="1" parent="mock_bvn"><mxGeometry x="0" y="52" width="260" height="20" as="geometry"/></mxCell>
+
+<mxCell id="prembly_bvn" value="PremblyBvnVerificationService" style="swimlane;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="800" y="1080" width="280" height="80" as="geometry"/></mxCell>
+<mxCell id="pb1" value="- apiKey: String" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="prembly_bvn"><mxGeometry x="0" y="30" width="280" height="22" as="geometry"/></mxCell>
+<mxCell id="pb2" value="+ verify(...): BvnVerificationResult" style="text;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="prembly_bvn"><mxGeometry x="0" y="52" width="280" height="22" as="geometry"/></mxCell>
+
+<!-- ==================== RELATIONSHIPS ==================== -->
+
+<!-- User uses UserRole -->
+<mxCell id="r_ur" style="endArrow=open;endFill=0;dashed=1;strokeColor=#9673a6;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="user_class" target="user_role"><mxGeometry relative="1" as="geometry"/></mxCell>
+
+<!-- User uses UserStatus -->
+<mxCell id="r_us" style="endArrow=open;endFill=0;dashed=1;strokeColor=#9673a6;" edge="1" parent="1" source="user_class" target="user_status"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="190" y="560"/><mxPoint x="190" y="240"/><mxPoint x="300" y="240"/></Array></mxGeometry></mxCell>
+
+<!-- Wallet uses WalletStatus -->
+<mxCell id="r_ws" style="endArrow=open;endFill=0;dashed=1;strokeColor=#9673a6;" edge="1" parent="1" source="wallet_class" target="wallet_status"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="570" y="560"/><mxPoint x="570" y="240"/><mxPoint x="680" y="240"/></Array></mxGeometry></mxCell>
+
+<!-- Wallet uses Currency -->
+<mxCell id="r_cur" style="endArrow=open;endFill=0;dashed=1;strokeColor=#9673a6;" edge="1" parent="1" source="wallet_class" target="currency"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="720" y="450"/><mxPoint x="850" y="450"/><mxPoint x="850" y="180"/></Array></mxGeometry></mxCell>
+
+<!-- Transaction uses TransactionStatus -->
+<mxCell id="r_ts" style="endArrow=open;endFill=0;dashed=1;strokeColor=#9673a6;" edge="1" parent="1" source="tx_class" target="tx_status"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="960" y="560"/><mxPoint x="960" y="240"/><mxPoint x="490" y="240"/></Array></mxGeometry></mxCell>
+
+<!-- User 1 to * Wallet -->
+<mxCell id="r_uw" style="endArrow=open;endFill=0;startArrow=ERmandOne;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="user_class" target="wallet_class"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r_uw_l1" value="1" style="text;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="332" y="415" width="20" height="20" as="geometry"/></mxCell>
+<mxCell id="r_uw_l2" value="*" style="text;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="400" y="415" width="20" height="20" as="geometry"/></mxCell>
+
+<!-- Wallet 1 to * Transaction -->
+<mxCell id="r_wt" style="endArrow=open;endFill=0;startArrow=ERmandOne;exitX=1;exitY=0.4;entryX=0;entryY=0.4;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="wallet_class" target="tx_class"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r_wt_l1" value="1" style="text;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="713" y="415" width="20" height="20" as="geometry"/></mxCell>
+<mxCell id="r_wt_l2" value="*" style="text;fontSize=12;fontStyle=1;" vertex="1" parent="1"><mxGeometry x="782" y="415" width="20" height="20" as="geometry"/></mxCell>
+
+<!-- TransactionService uses Transaction -->
+<mxCell id="r_tsc_tx" style="endArrow=open;endFill=0;dashed=1;strokeColor=#d6b656;" edge="1" parent="1" source="txsvc_class" target="tx_class"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="660"/><mxPoint x="960" y="660"/></Array></mxGeometry></mxCell>
+
+<!-- TransactionService uses WalletService -->
+<mxCell id="r_tsc_wsc" style="endArrow=open;endFill=0;strokeColor=#d6b656;strokeWidth=2;" edge="1" parent="1" source="txsvc_class" target="walletsvc_class"><mxGeometry relative="1" as="geometry"/></mxCell>
+<mxCell id="r_grpc_label" value="«gRPC»" style="text;fontSize=10;fontStyle=2;fontColor=#FF6600;" vertex="1" parent="1"><mxGeometry x="382" y="685" width="60" height="20" as="geometry"/></mxCell>
+
+<!-- WalletService uses Wallet -->
+<mxCell id="r_wsc_w" style="endArrow=open;endFill=0;dashed=1;strokeColor=#82b366;" edge="1" parent="1" source="walletsvc_class" target="wallet_class"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="580" y="660"/><mxPoint x="570" y="590"/></Array></mxGeometry></mxCell>
+
+<!-- UserService uses User -->
+<mxCell id="r_usc_u" style="endArrow=open;endFill=0;dashed=1;strokeColor=#82b366;" edge="1" parent="1" source="usersvc_class" target="user_class"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="950" y="660"/><mxPoint x="190" y="660"/><mxPoint x="190" y="580"/></Array></mxGeometry></mxCell>
+
+<!-- UserService uses BvnVerificationService -->
+<mxCell id="r_usc_bvn" style="endArrow=open;endFill=0;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1" source="usersvc_class" target="bvn_iface"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1120" y="660"/><mxPoint x="1120" y="180"/><mxPoint x="1060" y="180"/></Array></mxGeometry></mxCell>
+
+<!-- NotificationService uses NotificationStrategy -->
+<mxCell id="r_nsc_ni" style="endArrow=open;endFill=0;dashed=1;strokeColor=#6c8ebf;" edge="1" parent="1" source="notifsvc_class" target="notif_iface"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="740" y="1000"/><mxPoint x="1310" y="1000"/><mxPoint x="1310" y="160"/></Array></mxGeometry></mxCell>
+
+<!-- MockBvnVerificationService implements BvnVerificationService -->
+<mxCell id="r_mock_impl" style="endArrow=block;endFill=0;dashed=1;strokeColor=#9673a6;startArrow=none;" edge="1" parent="1" source="mock_bvn" target="bvn_iface"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="930" y="1020"/><mxPoint x="930" y="560"/><mxPoint x="1060" y="560"/><mxPoint x="1060" y="180"/></Array></mxGeometry></mxCell>
+<mxCell id="r_mock_label" value="«implements»" style="text;fontSize=10;fontStyle=2;fontColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="870" y="790" width="100" height="20" as="geometry"/></mxCell>
+
+<!-- PremblyBvnVerificationService implements BvnVerificationService -->
+<mxCell id="r_prem_impl" style="endArrow=block;endFill=0;dashed=1;strokeColor=#9673a6;" edge="1" parent="1" source="prembly_bvn" target="bvn_iface"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1090" y="1120"/><mxPoint x="1090" y="560"/><mxPoint x="1060" y="560"/><mxPoint x="1060" y="180"/></Array></mxGeometry></mxCell>
+<mxCell id="r_prem_label" value="«implements»" style="text;fontSize=10;fontStyle=2;fontColor=#9673a6;" vertex="1" parent="1"><mxGeometry x="870" y="870" width="100" height="20" as="geometry"/></mxCell>
+
+</root></mxGraphModel>

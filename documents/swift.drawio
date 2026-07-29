@@ -1,0 +1,328 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="gUo_d3j14Y_deRyPGFuS">
+    <mxGraphModel dx="1398" dy="730" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="473OwaHErvItGIH4E5Lg-303" parent="1" style="text;html=1;align=center;fontSize=20;fontStyle=1;" value="ERD — Fintech Wallet System" vertex="1">
+          <mxGeometry height="40" width="400" x="500" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-304" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="User" vertex="1">
+          <mxGeometry height="295" width="280" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-305" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-306" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ name: VARCHAR(100)" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-307" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ email: VARCHAR(150) [UNIQUE]" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-308" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ phone: VARCHAR(20) [UNIQUE]" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-309" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ bvn: VARCHAR(11) [UNIQUE]" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-310" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ passwordHash: VARCHAR(255)" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-311" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ role: ENUM(CUSTOMER, MANAGER)" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-312" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(ACTIVE, FROZEN, CLOSED)" vertex="1">
+          <mxGeometry height="25" width="280" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-313" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ freezeCount: INT DEFAULT 0" vertex="1">
+          <mxGeometry height="25" width="280" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-314" parent="473OwaHErvItGIH4E5Lg-304" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ createdAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-315" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="Wallet" vertex="1">
+          <mxGeometry height="245" width="280" x="420" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-316" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-317" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ userId: UUID [FK → User]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-318" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ currency: ENUM(NGN, USD)" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-319" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ balance: DECIMAL(19,4)" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-320" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(ACTIVE, FROZEN, CLOSED)" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-321" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ createdAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-322" parent="473OwaHErvItGIH4E5Lg-315" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ updatedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-323" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="Transaction" vertex="1">
+          <mxGeometry height="295" width="300" x="800" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-324" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-325" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ senderWalletId: UUID [FK → Wallet]" vertex="1">
+          <mxGeometry height="25" width="300" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-326" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ receiverWalletId: UUID [FK → Wallet]" vertex="1">
+          <mxGeometry height="25" width="300" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-327" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ amount: DECIMAL(19,4)" vertex="1">
+          <mxGeometry height="25" width="300" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-328" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ currency: ENUM(NGN, USD)" vertex="1">
+          <mxGeometry height="25" width="300" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-329" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(PENDING, COMPLETED, FAILED, REVERSED)" vertex="1">
+          <mxGeometry height="25" width="300" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-330" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ idempotencyKey: VARCHAR(255) [UNIQUE]" vertex="1">
+          <mxGeometry height="25" width="300" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-331" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ reference: VARCHAR(100) [UNIQUE]" vertex="1">
+          <mxGeometry height="25" width="300" y="205" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-332" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ createdAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="300" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-333" parent="473OwaHErvItGIH4E5Lg-323" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ completedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="300" y="255" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-334" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="BvnVerification" vertex="1">
+          <mxGeometry height="220" width="280" x="40" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-335" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-336" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ userId: UUID [FK → User]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-337" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(PENDING, VERIFIED, FAILED)" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-338" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ retryCount: INT DEFAULT 0" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-339" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ lastAttemptAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-340" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ verifiedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-341" parent="473OwaHErvItGIH4E5Lg-334" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ providerResponse: TEXT" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-342" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="AccountFreeze" vertex="1">
+          <mxGeometry height="220" width="280" x="420" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-343" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-344" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ userId: UUID [FK → User]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-345" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ frozenBy: UUID [FK → User]" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-346" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ frozenAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-347" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ freezeReason: TEXT" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-348" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ unfrozenAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-349" parent="473OwaHErvItGIH4E5Lg-342" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(ACTIVE, LIFTED)" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-350" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="WalletFreeze" vertex="1">
+          <mxGeometry height="220" width="280" x="800" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-351" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-352" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ walletId: UUID [FK → Wallet]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-353" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ frozenBy: UUID [FK → User]" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-354" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ frozenAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-355" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ freezeReason: TEXT" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-356" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ unfrozenAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-357" parent="473OwaHErvItGIH4E5Lg-350" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(ACTIVE, LIFTED)" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-358" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="TransactionFailure" vertex="1">
+          <mxGeometry height="195" width="280" x="40" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-359" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-360" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ transactionId: UUID [FK → Transaction]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-361" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ failureType: ENUM(DEBIT_FAILED, CREDIT_FAILED, REVERSAL_FAILED)" vertex="1">
+          <mxGeometry height="25" width="280" x="-20" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-362" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ failureReason: TEXT" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-363" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ failedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-364" parent="473OwaHErvItGIH4E5Lg-358" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ resolvedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-365" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="FraudFlag" vertex="1">
+          <mxGeometry height="220" width="280" x="420" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-366" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="280" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-367" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ transactionId: UUID [FK → Transaction]" vertex="1">
+          <mxGeometry height="25" width="280" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-368" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;fontStyle=2;" value="+ walletId: UUID [FK → Wallet]" vertex="1">
+          <mxGeometry height="25" width="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-369" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ flagType: ENUM(LARGE_TRANSFER, HIGH_VELOCITY, NEW_ACCOUNT)" vertex="1">
+          <mxGeometry height="25" width="280" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-370" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ riskScore: INT" vertex="1">
+          <mxGeometry height="25" width="280" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-371" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ status: ENUM(OPEN, REVIEWED, DISMISSED)" vertex="1">
+          <mxGeometry height="25" width="280" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-372" parent="473OwaHErvItGIH4E5Lg-365" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ flaggedAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="280" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-373" parent="1" style="swimlane;fontStyle=1;align=center;startSize=30;fontSize=13;" value="EventStore" vertex="1">
+          <mxGeometry height="220" width="300" x="800" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-374" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ id: UUID [PK]" vertex="1">
+          <mxGeometry height="25" width="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-375" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ aggregateId: UUID" vertex="1">
+          <mxGeometry height="25" width="300" y="55" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-376" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ aggregateType: VARCHAR(50)" vertex="1">
+          <mxGeometry height="25" width="300" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-377" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ eventType: VARCHAR(100)" vertex="1">
+          <mxGeometry height="25" width="300" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-378" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ payload: JSONB" vertex="1">
+          <mxGeometry height="25" width="300" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-379" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ version: BIGINT" vertex="1">
+          <mxGeometry height="25" width="300" y="155" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-380" parent="473OwaHErvItGIH4E5Lg-373" style="text;align=left;spacingLeft=10;fontSize=11;" value="+ occurredAt: TIMESTAMP" vertex="1">
+          <mxGeometry height="25" width="300" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-381" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-304" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="473OwaHErvItGIH4E5Lg-315">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-382" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="318" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-383" parent="1" style="text;fontSize=11;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry height="20" width="20" x="400" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-384" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-315" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=1;exitY=0.4;entryX=0;entryY=0.4;" target="473OwaHErvItGIH4E5Lg-323">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-385" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="698" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-386" parent="1" style="text;fontSize=11;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry height="20" width="20" x="780" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-387" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-304" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="473OwaHErvItGIH4E5Lg-334">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-388" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="165" y="368" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-389" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="165" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-390" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-304" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="473OwaHErvItGIH4E5Lg-342">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="180" y="410" />
+              <mxPoint x="560" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-391" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="540" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-392" parent="1" style="text;fontSize=11;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry height="20" width="20" x="540" y="412" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-393" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-315" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="473OwaHErvItGIH4E5Lg-350">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="560" y="380" />
+              <mxPoint x="940" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-394" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="920" y="370" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-395" parent="1" style="text;fontSize=11;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry height="20" width="20" x="920" y="452" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-396" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-358" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERone;startArrow=ERone;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="473OwaHErvItGIH4E5Lg-323">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="857" />
+              <mxPoint x="20" y="228" />
+              <mxPoint x="790" y="228" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-397" parent="1" style="text;fontSize=10;fontStyle=1;" value="0..1" vertex="1">
+          <mxGeometry height="20" width="30" x="22" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-398" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="795" y="212" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-399" edge="1" parent="1" source="473OwaHErvItGIH4E5Lg-323" style="edgeStyle=orthogonalEdgeStyle;endArrow=ERmany;startArrow=ERone;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="473OwaHErvItGIH4E5Lg-365">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="950" y="400" />
+              <mxPoint x="560" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-400" parent="1" style="text;fontSize=11;fontStyle=1;" value="1" vertex="1">
+          <mxGeometry height="20" width="20" x="940" y="395" as="geometry" />
+        </mxCell>
+        <mxCell id="473OwaHErvItGIH4E5Lg-401" parent="1" style="text;fontSize=11;fontStyle=1;" value="*" vertex="1">
+          <mxGeometry height="20" width="20" x="550" y="712" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
